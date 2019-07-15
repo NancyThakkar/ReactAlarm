@@ -4,6 +4,7 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 
 import com.orhanobut.hawk.Hawk;
 
@@ -55,7 +56,9 @@ public class Alarm {
     protected void setIntent() {
         pendingIntent = getPendingIntent();
         alarmManager = (AlarmManager) ctxt.getSystemService(Context.ALARM_SERVICE);
-        alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, getCalendar().getTimeInMillis(), pendingIntent);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, getCalendar().getTimeInMillis(), pendingIntent);
+        }
         Timber.i("Set alarm intent: " + getPrettyTime());
     }
 

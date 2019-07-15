@@ -28,7 +28,7 @@ public class AlarmReceiver extends BroadcastReceiver {
 
         // Show sunrise
         Intent i = new Intent();
-        i.setClassName("io.priome", "io.priome.Sunrise");
+        i.setClassName("com.royole.myrnapplication", "com.royole.myrnapplication.Sunrise");
         i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(i);
     }
